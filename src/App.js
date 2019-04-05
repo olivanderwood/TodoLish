@@ -8,6 +8,7 @@ class App extends Component {
   constructor (){
     super ();
     this.state = {
+    displayStatus:'all',
     inputText: '',
     itemList : []
   }
@@ -15,21 +16,26 @@ class App extends Component {
   this.onKeyUp = this.onKeyUp.bind(this);
   this.onChange = this.onChange.bind(this);
   this.onDelButtonClick = this.onDelButtonClick.bind(this);
+
+  this.changeStatusAll = this.changeStatusAll.bind(this);
+  this.changeStatusFinish = this.changeStatusFinish.bind(this);
+  this.changeStatusUnFinish = this.changeStatusUnFinish.bind(this);
+
 }
 
-componentWillMount(){
-  
-  let listNew = JSON.parse(localStorage.getItem('key'))
-  this.setState({
-    itemList : listNew,
-  })
-}
+  componentWillMount(){
+    
+    let listNew = JSON.parse(localStorage.getItem('key'))
+    this.setState({
+      itemList : listNew,
+    })
+  }
 
 
-componentDidUpdate(){
-  const {itemList} =this.state;
-  localStorage.setItem('key', JSON.stringify(itemList))
-}
+  componentDidUpdate(){
+    const {itemList} =this.state;
+    localStorage.setItem('key', JSON.stringify(itemList))
+  }
 
 
 
@@ -39,14 +45,14 @@ componentDidUpdate(){
         const {itemList} = this.state;
         const value = itemList.indexOf(item);
         this.setState({
-         itemList : [
+          itemList : [
           ...itemList.slice(0,value),
           {
             ...item,
             isCheck: !isCheck
           },
           ...itemList.slice(value + 1)
-         ]
+          ]
         })
 
       }
@@ -107,9 +113,55 @@ componentDidUpdate(){
   }
 
 
+  changeStatusAll(){
+    this.setState({
+      displayStatus: 'all'
+    })
+  }
+
+  changeStatusFinish(){
+    this.setState({
+      displayStatus: 'finish'
+    })
+  }
+
+  changeStatusUnFinish(){
+    this.setState({
+      displayStatus: 'unfinish'
+    })
+  }
+
+
   render() {
-    const {itemList} = this.state
-   
+    const {itemList, displayStatus} = this.state
+    var listRender;
+
+    if(displayStatus === 'all'){
+      listRender = itemList
+    }
+
+
+    function ReturnFinish(itemFilter){
+      if(itemFilter.isCheck === true){
+        return true;
+      }
+      return false;
+    }
+
+    if(displayStatus === 'finish'){
+      listRender = itemList.filter(ReturnFinish)
+    }
+
+    function ReturnUnfinish(itemFilter){
+      if(itemFilter.isCheck === false){
+        return true;
+      }
+      return false;
+    }
+
+    if(displayStatus === 'unfinish'){
+      listRender = itemList.filter(ReturnUnfinish)
+    }
       
       return (
         <Container>
@@ -125,9 +177,10 @@ componentDidUpdate(){
 
               <div className="Showlist">
                 {
-                itemList.length && itemList.map(
+                listRender.length && listRender.map(
                 (item, index) =>  
                 <Testdad 
+                  status = {this.state.displayStatus}
                   key = {index} 
                   name= {item} 
                   onClick = {this.onItemClick(item)} />
@@ -135,6 +188,9 @@ componentDidUpdate(){
                 }
               </div>
               <Button color="danger" onClick = {this.onDelButtonClick}>Delete</Button>
+              <Button onClick = {this.changeStatusAll}> All</Button>
+              <Button onClick = {this.changeStatusFinish}> Finish </Button>
+              <Button onClick = {this.changeStatusUnFinish}> Unfinish </Button>
             </div>
           
           </Col>

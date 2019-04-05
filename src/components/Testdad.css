@@ -1,5 +1,5 @@
 .Testdad{
-    color: red;
+    color: orange;
     font-weight: bold;
     border-bottom: 1px solid black;
     height: 2.5em;
@@ -15,4 +15,24 @@
     color: black;
     opacity: 0.3;
     font-weight: bold;
+}
+
+
+
+.Testdad-finish{
+    color: #5cb85c;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    height: 2.5em;
+    line-height: 2.5em;
+}
+
+
+
+.Testdad-unfinish{
+    color: red;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    height: 2.5em;
+    line-height: 2.5em;
 }
