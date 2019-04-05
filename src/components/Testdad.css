@@ -1,0 +1,18 @@
+.Testdad{
+    color: red;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    height: 2.5em;
+    line-height: 2.5em;
+}
+
+.Testdad:last-child{
+    border-bottom: none;    
+}
+
+.Testdad-check{
+    text-decoration: line-through;
+    color: black;
+    opacity: 0.3;
+    font-weight: bold;
+}
