@@ -5,14 +5,37 @@
 
 .App{
   margin-top: 5em;
+ 
 }
 
 
 .Showlist {
   margin-top: 1em;
   text-align: center;
-  border: solid 1px black;
-  border-radius: 0.5em;
+  margin-bottom: 2em;
+  background-color: aqua;
 }
 
+
+
+.actionButton:hover{
+  transition: 0.3s;
+  background-color: white;
+  transform: translateY(-0.2em);
+}
+
+.actionButtonOnStatus{
+  transition: 0.3s;
+  background-color: white;
+  transform: translateY(-0.2em);
+}
+
+#delete img{
+  height: 1.3em;
+  width: 1.3em;
+}
+
+#tooltip{
+  opacity: 0.5;
+}
 

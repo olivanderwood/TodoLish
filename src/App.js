@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import Testdad from './components/Testdad';
-import {Container, Col, Input, Button} from 'reactstrap';
+import {Container, Col, Input, Button, UncontrolledTooltip} from 'reactstrap';
+import classNames from 'classnames';
+
+
+import logoDelete from './icon/delete.png';
 
 
 class App extends Component {
   constructor (){
     super ();
     this.state = {
-    displayStatus:'all',
+    displayStatus:'all', //finish, unfinish
     inputText: '',
     itemList : []
   }
@@ -136,10 +140,17 @@ class App extends Component {
     const {itemList, displayStatus} = this.state
     var listRender;
 
+    var holdAll =false;
+    var holdFinish = false;
+    var holdUnfinish =false;
+
     if(displayStatus === 'all'){
-      listRender = itemList
+      listRender = itemList;
+      holdAll = true;
     }
 
+
+    //filter item have finish status
 
     function ReturnFinish(itemFilter){
       if(itemFilter.isCheck === true){
@@ -149,8 +160,13 @@ class App extends Component {
     }
 
     if(displayStatus === 'finish'){
+      holdFinish =true;
       listRender = itemList.filter(ReturnFinish)
+
     }
+    //end filter
+
+    //filter item have unfinish status
 
     function ReturnUnfinish(itemFilter){
       if(itemFilter.isCheck === false){
@@ -160,11 +176,17 @@ class App extends Component {
     }
 
     if(displayStatus === 'unfinish'){
+      holdUnfinish =true;
       listRender = itemList.filter(ReturnUnfinish)
     }
-      
+    
+    //end filter
+    
+
+    if(listRender.length){      
       return (
         <Container>
+
           <Col sm={{ size: 4, offset: 4 }}>
 
             <div className="App">
@@ -176,6 +198,7 @@ class App extends Component {
                 onKeyUp = {this.onKeyUp} />
 
               <div className="Showlist">
+
                 {
                 listRender.length && listRender.map(
                 (item, index) =>  
@@ -184,20 +207,139 @@ class App extends Component {
                   key = {index} 
                   name= {item} 
                   onClick = {this.onItemClick(item)} />
-                )
-                }
+                )}
+
               </div>
-              <Button color="danger" onClick = {this.onDelButtonClick}>Delete</Button>
-              <Button onClick = {this.changeStatusAll}> All</Button>
-              <Button onClick = {this.changeStatusFinish}> Finish </Button>
-              <Button onClick = {this.changeStatusUnFinish}> Unfinish </Button>
+
+              <Button outline color="danger" onClick = {this.onDelButtonClick} id="delete" className="actionButton"><img src={logoDelete} alt="Logo" /></Button>
+              <UncontrolledTooltip placement="bottom" target="delete" id="tooltip" >Delete all your finish work</UncontrolledTooltip>
+              <Button onClick = {this.changeStatusAll} className={classNames('actionButton', {'actionButtonOnStatus': holdAll})}> All</Button>
+              <Button onClick = {this.changeStatusFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdFinish})}> Finish </Button>
+              <Button onClick = {this.changeStatusUnFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdUnfinish})}> Unfinish </Button>
+              
             </div>
           
           </Col>
         </Container>
       )
+    }
+    if(listRender.length === 0 && displayStatus === 'all'){
 
+      const nothingItem = {title: 'You have nothing to do', isCheck: false} 
+
+      return (
+        <Container>
+
+          <Col sm={{ size: 4, offset: 4 }}>
+
+            <div className="App">
+              <Input 
+                type="text" 
+                placeholder="Add new item" 
+                value = {this.state.inputText}
+                onChange = {this.onChange}
+                onKeyUp = {this.onKeyUp} />
+
+              <div className="Showlist">
+
+                <Testdad  name = {nothingItem}  status = 'nothing' key  ="0"/>
+            
+
+              </div>
+
+              <Button outline color="danger" onClick = {this.onDelButtonClick} id="delete" className="actionButton"><img src={logoDelete} alt="Logo" /></Button>
+              <Button onClick = {this.changeStatusAll} className={classNames('actionButton', {'actionButtonOnStatus': holdAll})}> All</Button>
+              <Button onClick = {this.changeStatusFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdFinish})}> Finish </Button>
+              <Button onClick = {this.changeStatusUnFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdUnfinish})}> Unfinish </Button>
+              
+            </div>
+          
+          </Col>
+        </Container>
+      )
     
+    }
+
+
+
+
+    if(listRender.length === 0 && displayStatus === 'finish'){
+
+      const nothingItem = {title: "you don't have finish work", isCheck: false} 
+
+      return (
+        <Container>
+
+          <Col sm={{ size: 4, offset: 4 }}>
+
+            <div className="App">
+              <Input 
+                type="text" 
+                placeholder="Add new item" 
+                value = {this.state.inputText}
+                onChange = {this.onChange}
+                onKeyUp = {this.onKeyUp} />
+
+              <div className="Showlist">
+
+                <Testdad  name = {nothingItem}  status = 'nothing' key  ="0"/>
+            
+
+              </div>
+
+              <Button outline color="danger" onClick = {this.onDelButtonClick} id="delete" className="actionButton"><img src={logoDelete} alt="Logo" /></Button>
+              <Button onClick = {this.changeStatusAll} className={classNames('actionButton', {'actionButtonOnStatus': holdAll})}> All</Button>
+              <Button onClick = {this.changeStatusFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdFinish})}> Finish </Button>
+              <Button onClick = {this.changeStatusUnFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdUnfinish})}> Unfinish </Button>
+              
+            </div>
+          
+          </Col>
+        </Container>
+      )
+    
+    }
+
+
+
+    if(listRender.length === 0 && displayStatus === 'unfinish'){
+
+      const nothingItem = {title: "you don't have unfinish work", isCheck: false} 
+
+      return (
+        <Container>
+
+          <Col sm={{ size: 4, offset: 4 }}>
+
+            <div className="App">
+              <Input 
+                type="text" 
+                placeholder="Add new item" 
+                value = {this.state.inputText}
+                onChange = {this.onChange}
+                onKeyUp = {this.onKeyUp} />
+
+              <div className="Showlist">
+
+                <Testdad  name = {nothingItem}  status = 'nothing' key  ="0"/>
+            
+
+              </div>
+
+              <Button outline color="danger" onClick = {this.onDelButtonClick} id="delete" className="actionButton"><img src={logoDelete} alt="Logo" /></Button>
+              <Button onClick = {this.changeStatusAll} className={classNames('actionButton', {'actionButtonOnStatus': holdAll})}> All</Button>
+              <Button onClick = {this.changeStatusFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdFinish})}>  Finish </Button>
+              <Button onClick = {this.changeStatusUnFinish} className={classNames('actionButton', {'actionButtonOnStatus': holdUnfinish})}> Unfinish </Button>
+              
+            </div>
+          
+          </Col>
+        </Container>
+      )
+    
+    }
+  
+  
   }
 }
 

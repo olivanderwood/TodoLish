@@ -7,7 +7,7 @@
 }
 
 .Testdad:last-child{
-    border-bottom: none;    
+    border-bottom: none;
 }
 
 .Testdad-check{
@@ -31,6 +31,16 @@
 
 .Testdad-unfinish{
     color: red;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    height: 2.5em;
+    line-height: 2.5em;
+}
+
+
+
+.Testdad-nothing{
+    color: grey;
     font-weight: bold;
     border-bottom: 1px solid black;
     height: 2.5em;

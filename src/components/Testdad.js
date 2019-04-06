@@ -5,6 +5,7 @@ import classNames from 'classnames';
 class Testdad extends Component {
 
 
+
     render() {
         const {name, onClick, status} = this.props;
 
@@ -21,7 +22,7 @@ class Testdad extends Component {
 
         if(status === 'finish'){
             return (
-                <div onClick ={onClick} className = 'Testdad Testdad-finish' disable>
+                <div className = 'Testdad Testdad-finish' >
                     <p>{this.props.name.title}</p>
                 </div>
             )
@@ -32,7 +33,18 @@ class Testdad extends Component {
 
         if(status === 'unfinish'){
             return (
-                <div onClick ={onClick} className = 'Testdad Testdad-unfinish' disable>
+                <div className = 'Testdad Testdad-unfinish' disable>
+                    <p>{this.props.name.title}</p>
+                </div>
+            )
+    
+        }
+
+
+
+        if(status === 'nothing'){
+            return (
+                <div className = 'Testdad Testdad-nothing' disable>
                     <p>{this.props.name.title}</p>
                 </div>
             )
