@@ -28,13 +28,17 @@ class App extends Component {
 }
 
   componentWillMount(){
-    let start = [{title:'',isCheck:''}];
-    localStorage.setItem('key', JSON.stringify(start))
-    let listNew = JSON.parse(localStorage.getItem('key'))
+    
+    var listNew = JSON.parse(localStorage.getItem('key'))
+    if(listNew.length < 1){
+      let start = [];
+      localStorage.setItem('key', JSON.stringify(start))
+    }
     this.setState({
-      itemList : listNew,
+        itemList : listNew,
     })
   }
+  
 
 
   componentDidUpdate(){
@@ -184,7 +188,7 @@ class App extends Component {
     //end filter
     
 
-    if(listRender.length){      
+    if(listRender.length ){      
       return (
         <Container className = "back">
 
