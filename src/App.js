@@ -28,7 +28,8 @@ class App extends Component {
 }
 
   componentWillMount(){
-    
+    let start = [{title:'',isCheck:''}];
+    localStorage.setItem('key', JSON.stringify(start))
     let listNew = JSON.parse(localStorage.getItem('key'))
     this.setState({
       itemList : listNew,
