@@ -1,39 +1,72 @@
 .Testdad{
-    color: orange;
+    color: #204e5f;
     font-weight: bold;
+    height: auto;
+    text-align: center;
+    position: relative;
+    line-height: 2.5em;
+    display: block;
+    
+}
+
+
+@font-face{
+    font-family: itemFont;
+    src: url(./fonts/Lobster.otf);
+  
+}
+
+.Testdad p{
     border-bottom: 1px solid black;
     height: 2.5em;
-    line-height: 2.5em;
+    font-size: 20px;
+    margin-bottom: 0 !important;
+    font-family: itemFont;
 }
+
+
+
 
 .Testdad:last-child{
     border-bottom: none;
 }
 
+
+
 .Testdad-check{
     text-decoration: line-through;
-    color: black;
-    opacity: 0.3;
+    color: #f0f0df;
+    height: auto;
+    opacity: 1;
     font-weight: bold;
+    background-color: #272f32;
 }
 
 
+.Testdad img{
+    width: 1em;
+    height: 1em;
+    margin-right: 1em;
+    position: relative;
+    float: right;
+    margin-top: -1.8em;
+    
+}
 
 .Testdad-finish{
-    color: #5cb85c;
+    color: #057f00;
     font-weight: bold;
-    border-bottom: 1px solid black;
-    height: 2.5em;
+    
+    height: auto;
     line-height: 2.5em;
 }
 
 
 
 .Testdad-unfinish{
-    color: red;
+    color: #cd1417;
     font-weight: bold;
-    border-bottom: 1px solid black;
-    height: 2.5em;
+    height: auto;
     line-height: 2.5em;
 }
 
@@ -43,6 +76,6 @@
     color: grey;
     font-weight: bold;
     border-bottom: 1px solid black;
-    height: 2.5em;
+    height: auto;
     line-height: 2.5em;
 }
