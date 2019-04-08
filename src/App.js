@@ -29,15 +29,17 @@ class App extends Component {
 
   componentWillMount(){
     
-    
-    if(localStorage.getItem('key')===''){
-      let start = [];
+    let start = [];
+    var listNew;
+    if(localStorage.getItem('key')=== null){
+     
       localStorage.setItem('key', JSON.stringify(start))
     }
-    var listNew = JSON.parse(localStorage.getItem('key'))
+   listNew = JSON.parse(localStorage.getItem('key'))
     this.setState({
         itemList : listNew,
     })
+    
   }
   
 
@@ -187,7 +189,7 @@ class App extends Component {
     }
     
     //end filter
-    
+  
 
     if(listRender.length ){      
       return (
