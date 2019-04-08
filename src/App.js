@@ -196,7 +196,7 @@ class App extends Component {
         <Container className = "back">
 
           <Row>
-            <Col sm={{ size: 5, offset: 3 }}>
+            <Col sm={{ size: 5, offset: 4 }}>
 
               <div className="App">
 
@@ -244,7 +244,7 @@ class App extends Component {
       return (
         <Container className = "back">
           <Row>
-            <Col sm={{ size: 5, offset: 3 }}>
+            <Col sm={{ size: 5, offset: 4 }}>
 
               <div className="App">
                 <h1>To-Do</h1>
@@ -288,7 +288,7 @@ class App extends Component {
       return (
         <Container className = "back">
           <Row>
-            <Col sm={{ size: 5, offset: 3 }}>
+            <Col sm={{ size: 5, offset: 4 }}>
 
               <div className="App">
                 <h1>To-Do</h1>
@@ -331,7 +331,7 @@ class App extends Component {
         <Container className = "back">
           
           <Row>
-            <Col sm={{ size: 5, offset: 3 }}>
+            <Col sm={{ size: 5, offset: 4 }}>
 
               <div className="App">
                 <h1>To-Do</h1>

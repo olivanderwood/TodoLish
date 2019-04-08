@@ -15,8 +15,11 @@
 
 .App{
   margin-top: 5em;
- 
+  margin-left: -5em !important;
+  margin-right: 2em;
 }
+
+
 
 
 .App h1{
@@ -36,7 +39,7 @@
 
 .actionMenu{
   margin-top: 10em;
-  margin-left: -0.8em;
+  margin-left: -3em;
 }
 
 
