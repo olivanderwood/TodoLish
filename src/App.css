@@ -15,8 +15,7 @@
 
 .App{
   margin-top: 5em;
-  margin-left: -5em !important;
-  margin-right: 2em;
+ 
 }
 
 
@@ -39,20 +38,21 @@
 
 .actionMenu{
   margin-top: 10em;
-  margin-left: -3em;
+  
 }
 
 
 .actionButton{
-    width: 6em;
+    width: 6.8em;
     font-size: 12px !important;
     text-align: center !important;
     font-weight: bold !important;
     color: #888888 !important;
-    background-color: white !important;
+    background-color: #daeaef !important;
     border: none !important;
     box-shadow: none !important;
     font-family: Georgia;
+    border: 0.05em #daeaef outset !important;
 }
 
 
